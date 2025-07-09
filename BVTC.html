@@ -1,0 +1,1561 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bridgeway Visa Travel Corporation</title>
+    <link rel="icon" type="image/png" href="logo.jpg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.9) 0%, rgba(52, 73, 94, 0.9) 100%);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .partners-card {
+            transition: all 0.3s ease;
+        }
+
+        .partners-card:hover {
+            background-color: white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        .btn-primary {
+            background-color: var(--secondary);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .stats-item {
+            transition: transform 0.3s ease;
+        }
+
+        .stats-item:hover {
+            transform: scale(1.05);
+        }
+
+        /* Accordion Styles */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            padding: 0 1.5rem;
+        }
+
+        .accordion-content.open {
+            padding: 1rem 1.5rem;
+        }
+
+        .accordion-button {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 1rem 1.5rem;
+            text-align: left;
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .accordion-button:hover {
+            background-color: #f3f4f6;
+        }
+
+        .accordion-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-icon.rotate {
+            transform: rotate(180deg);
+        }
+
+        /* Team Section Styles */
+        .team-row {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+            width: 100%;
+            position: static;
+            background: none;
+            height: auto;
+            z-index: auto;
+        }
+
+        @media (max-width: 900px) {
+            .team-row {
+                gap: 1.25rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .team-row {
+                gap: 1rem;
+                flex-direction: column;
+                width: 100%;
+                padding: 0;
+            }
+
+            .team-row>div {
+                width: 90vw !important;
+                max-width: 20rem;
+            }
+        }
+
+        .team-photo-large {
+            width: 8rem;
+            /* 128px */
+            height: 9.5rem;
+            /* 152px */
+            object-fit: cover;
+            border-radius: 0.75rem !important;
+            /* rounded-xl */
+            transition: transform 0.2s;
+        }
+
+        .team-photo-large:hover {
+            transform: scale(1.04);
+        }
+
+        @media (max-width: 600px) {
+            .team-photo-large {
+                width: 7rem;
+                height: 8.5rem;
+            }
+        }
+
+        /* Our Team Section */
+        .our-team-section {
+            padding: 4rem 0 3rem 0;
+            background: #f9fafb;
+            margin-top: 0;
+        }
+
+        .our-team-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .team-row {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 900px) {
+            .team-row {
+                gap: 1.25rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .our-team-section {
+                padding: 2rem 0 1.5rem 0;
+            }
+
+            .team-row {
+                gap: 1rem;
+                flex-direction: column;
+                width: 100%;
+                padding: 0;
+            }
+
+            .team-row>div {
+                width: 90vw !important;
+                max-width: 20rem;
+            }
+        }
+
+        /* Office Section Padding Adjustments */
+        #office {
+            padding: 8rem !important;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 900px) {
+            #office {
+                padding: 5rem 2rem !important;
+            }
+        }
+
+        @media (max-width: 600px) {
+            #office {
+                padding: 2rem 0.5rem !important;
+            }
+        }
+
+        /* Section Title Styles */
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2563eb;
+            /* Tailwind blue-700 */
+            margin-bottom: 2.5rem;
+            margin-top: 0;
+            letter-spacing: 0.01em;
+        }
+
+        @media (max-width: 600px) {
+            .section-title {
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        .BVTC-logo {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+        }
+
+        @media (max-width: 600px) {
+            .BVTC-logo {
+                width: 36px;
+                height: 36px;
+            }
+        }
+
+        /* Hide scrollbar for the scrollable container */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <div class="flex items-center justify-center">
+                        <img src="logo.jpg" alt="BVTC Logo"
+                            style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover; display: block;"
+                            class="BVTC-logo">
+                    </div>
+                    <span class="ml-3 text-xl font-bold text-gray-800">Bridgeway Visa Travel Corporation</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-center space-x-4">
+                        <a href="#office"
+                            class="nav-link text-gray-800 px-3 py-2 rounded-md text-sm font-medium">Office</a>
+                        <a href="#services"
+                            class="nav-link text-gray-800 px-3 py-2 rounded-md text-sm font-medium">Services</a>
+                        <a href="#about" class="nav-link text-gray-800 px-3 py-2 rounded-md text-sm font-medium">About
+                            Us</a>
+                        <a href="#partners"
+                            class="nav-link text-gray-800 px-3 py-2 rounded-md text-sm font-medium">Partners</a>
+                        <a href="#contact"
+                            class="nav-link text-gray-800 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" id="mobile-menu-button"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-800 focus:outline-none">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div class="mobile-menu hidden md:hidden bg-white shadow-lg" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#office" class="block text-gray-800 px-3 py-2 rounded-md text-base font-medium">Office</a>
+                <a href="#services" class="block text-gray-800 px-3 py-2 rounded-md text-base font-medium">Services</a>
+                <a href="#about" class="block text-gray-800 px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="#partners" class="block text-gray-800 px-3 py-2 rounded-md text-base font-medium">Partners</a>
+                <a href="#contact" class="block text-gray-800 px-3 py-2 rounded-md text-base font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Office Section -->
+    <section id="office" class="pt-24 pb-32 bg-gray-50 animate-fade-in">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="section-title">Our Office</h2>
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <!-- Office Collage -->
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="grid grid-cols-2 gap-4 w-full max-w-md">
+                        <!-- Portrait Image 1 -->
+                        <img src="ourOffice/theOffice.jpg" alt="Office Portrait 1"
+                            class="w-full h-48 object-cover rounded-lg shadow-md col-span-1 row-span-1">
+                        <!-- Portrait Image 2 -->
+                        <img src="ourOffice/lobbyOfOffice.jpg" alt="Office Portrait 2"
+                            class="w-full h-48 object-cover rounded-lg shadow-md col-span-1 row-span-1">
+                        <!-- Landscape Image (Outside of the Office) -->
+                        <img src="ourOffice/outsideOfTheOffice.jpg" alt="Outside of the Office"
+                            class="w-full h-40 object-cover rounded-lg shadow-md col-span-2">
+                    </div>
+                </div>
+                <!-- Office Content -->
+                <div class="md:w-1/2">
+                    <p class="text-gray-700 mb-4">
+                        Welcome to BVTC Global Recruitment Inc.'s main office, located in the heart of Marikina City.
+                        Our modern workspace is designed to foster collaboration, innovation, and a welcoming
+                        environment for both clients and candidates.
+                    </p>
+                    <p class="text-gray-700 mb-4">
+                        We are committed to providing exceptional recruitment services and support. Whether you are
+                        seeking new career opportunities or looking for top talent, our team is ready to assist you
+                        every step of the way.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Services Section -->
+    <section id="services" class="py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-blue-700 text-center mb-10 tracking-wide">SERVICES WE OFFER
+            </h2>
+            <div id="services-accordion" class="space-y-4">
+                <!-- TOURIST VISA -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                    <button type="button"
+                        class="w-full flex justify-between items-center px-6 py-4 bg-blue-50 hover:bg-blue-100 focus:outline-none transition font-semibold text-blue-700 text-lg accordion-btn"
+                        data-accordion="tourist">
+                        <span>TOURIST VISA</span>
+                        <svg class="w-5 h-5 accordion-icon transition-transform duration-300" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="accordion-content bg-white text-gray-700 transition-all duration-300 max-h-0 overflow-hidden"
+                        data-content="tourist">
+                        <div class="px-6 pb-5 pt-2">
+                            <p>
+                                Tourist visas are non-immigrant visas granted to persons who want to enter a certain
+                                country temporarily for business, leisure, or a combination of both. With this visa, the
+                                duration of your stay in a certain country is limited depending on the duration approval
+                                of the Embassy Consul.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- STUDENT VISA -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                    <button type="button"
+                        class="w-full flex justify-between items-center px-6 py-4 bg-blue-50 hover:bg-blue-100 focus:outline-none transition font-semibold text-blue-700 text-lg accordion-btn"
+                        data-accordion="student">
+                        <span>STUDENT VISA</span>
+                        <svg class="w-5 h-5 accordion-icon transition-transform duration-300" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="accordion-content bg-white text-gray-700 transition-all duration-300 max-h-0 overflow-hidden"
+                        data-content="student">
+                        <div class="px-6 pb-5 pt-2">
+                            <p>
+                                A student visa is a non-immigrant visa that allows foreign students to enter and stay in
+                                their preferred country overseas for the duration of their studies or coursework. A
+                                student visa is special. Before applying for a visa, students are required to be
+                                enrolled at a qualified educational institution. Student visas are issued for the period
+                                it takes the student to complete his/her course of study, program, or work assignment.
+                                The course of study and the type of institution determines the category of visa that
+                                will be issued to the student.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- DEPENDENT VISA / OPEN WORK PERMIT -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                    <button type="button"
+                        class="w-full flex justify-between items-center px-6 py-4 bg-blue-50 hover:bg-blue-100 focus:outline-none transition font-semibold text-blue-700 text-lg accordion-btn"
+                        data-accordion="dependent">
+                        <span>DEPENDENT VISA / OPEN WORK PERMIT</span>
+                        <svg class="w-5 h-5 accordion-icon transition-transform duration-300" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="accordion-content bg-white text-gray-700 transition-all duration-300 max-h-0 overflow-hidden"
+                        data-content="dependent">
+                        <div class="px-6 pb-5 pt-2">
+                            <p>
+                                This visa enables the dependents of a person who is a citizen or permanent resident of a
+                                certain country to enter and remain within the aforementioned country. The legal
+                                resident, otherwise referred to as the sponsor, is responsible for the visa application.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- POST GRADUATION WORK VISA -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                    <button type="button"
+                        class="w-full flex justify-between items-center px-6 py-4 bg-blue-50 hover:bg-blue-100 focus:outline-none transition font-semibold text-blue-700 text-lg accordion-btn"
+                        data-accordion="postgrad">
+                        <span>POST GRADUATION WORK VISA</span>
+                        <svg class="w-5 h-5 accordion-icon transition-transform duration-300" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="accordion-content bg-white text-gray-700 transition-all duration-300 max-h-0 overflow-hidden"
+                        data-content="postgrad">
+                        <div class="px-6 pb-5 pt-2">
+                            <p>
+                                Refers to a type of work visa granted to international students who have completed their
+                                studies at a recognized educational institution in a specific country. This visa allows
+                                graduates to stay and work in that country for a certain period after graduation to gain
+                                professional experience in their field of study.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- RESIDENCY & CITIZENSHIP -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                    <button type="button"
+                        class="w-full flex justify-between items-center px-6 py-4 bg-blue-50 hover:bg-blue-100 focus:outline-none transition font-semibold text-blue-700 text-lg accordion-btn"
+                        data-accordion="residency">
+                        <span>RESIDENCY & CITIZENSHIP</span>
+                        <svg class="w-5 h-5 accordion-icon transition-transform duration-300" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="accordion-content bg-white text-gray-700 transition-all duration-300 max-h-0 overflow-hidden"
+                        data-content="residency">
+                        <div class="px-6 pb-5 pt-2">
+                            <p>
+                                Our Residency and Citizenship program provides a seamless, step-by-step solution for
+                                individuals and families looking to obtain legal residency in a new country and
+                                eventually transition to full citizenship.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Programs / Study Opportunities -->
+            <!-- Featured Programs Section -->
+            <div class="mt-16 relative">
+                <h3 class="text-2xl font-bold text-blue-800 mb-8 text-center">Featured Programs</h3>
+
+                <!-- Scroll Buttons -->
+                <button id="scrollLeft"
+                    class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white z-10 shadow-lg p-3 rounded-full text-2xl font-bold text-blue-600 hover:bg-blue-100 transition duration-300">
+                    &lt;
+                </button>
+                <button id="scrollRight"
+                    class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white z-10 shadow-lg p-3 rounded-full text-2xl font-bold text-blue-600 hover:bg-blue-100 transition duration-300">
+                    &gt;
+                </button>
+
+                <!-- Scrollable Container -->
+                <div id="scrollContainer" class="flex gap-6 overflow-x-auto scroll-smooth no-scrollbar py-6 mx-auto
+       w-[324px] sm:w-[324px] md:w-[324px] lg:w-[624px]">
+
+                    <!-- Card 1 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col w-[300px] flex-shrink-0">
+                        <div class="w-full h-64 mb-6">
+                            <img src="featuredPrograms/continuingCareAssisstant.jpg"
+                                alt="Continuing Care Assistant Program"
+                                class="w-full h-full object-cover rounded-lg shadow-md transform transition duration-300 hover:scale-105" />
+                        </div>
+                        <div class="p-6 flex flex-col flex-1">
+                            <h4 class="font-semibold text-lg text-blue-700 mb-2">Continuing Care Assistant Program</h4>
+                            <p class="text-gray-600 mb-4 flex-1">Start your career in healthcare and make a difference
+                                in the lives of others.</p>
+                            <a href="#" class="btn-primary text-center py-2 px-4 rounded-md font-medium mt-auto">Learn
+                                More</a>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col w-[300px] flex-shrink-0">
+                        <div class="w-full h-64 mb-6">
+                            <img src="featuredPrograms/studentVisaInCanada.jpg" alt="Student Visa in Canada"
+                                class="w-full h-full object-cover rounded-lg shadow-md transform transition duration-300 hover:scale-105" />
+                        </div>
+                        <div class="p-6 flex flex-col flex-1">
+                            <h4 class="font-semibold text-lg text-blue-700 mb-2">Student Visa in Canada</h4>
+                            <p class="text-gray-600 mb-4 flex-1">Experience world-class education and vibrant
+                                multicultural life in Canada.</p>
+                            <a href="#" class="btn-primary text-center py-2 px-4 rounded-md font-medium mt-auto">Apply
+                                Now</a>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col w-[300px] flex-shrink-0">
+                        <div class="w-full h-64 mb-6">
+                            <img src="featuredPrograms/studyInAustrillia.jpg" alt="Study in Australia"
+                                class="w-full h-full object-cover rounded-lg shadow-md transform transition duration-300 hover:scale-105" />
+                        </div>
+                        <div class="p-6 flex flex-col flex-1">
+                            <h4 class="font-semibold text-lg text-blue-700 mb-2">Study in Australia</h4>
+                            <p class="text-gray-600 mb-4 flex-1">Unlock opportunities at top Australian universities.
+                            </p>
+                            <a href="#" class="btn-primary text-center py-2 px-4 rounded-md font-medium mt-auto">Learn
+                                More</a>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col w-[300px] flex-shrink-0">
+                        <div class="w-full h-64 mb-6">
+                            <img src="featuredPrograms/longtermResidencyPathwayNewZealand.jpg"
+                                alt="Residency Pathway in New Zealand"
+                                class="w-full h-full object-cover rounded-lg shadow-md transform transition duration-300 hover:scale-105" />
+                        </div>
+                        <div class="p-6 flex flex-col flex-1">
+                            <h4 class="font-semibold text-lg text-blue-700 mb-2">Residency Pathway in New Zealand</h4>
+                            <p class="text-gray-600 mb-4 flex-1">Discover your route to long-term residency in New
+                                Zealand.</p>
+                            <a href="#" class="btn-primary text-center py-2 px-4 rounded-md font-medium mt-auto">Start
+                                Journey</a>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col w-[300px] flex-shrink-0">
+                        <div class="w-full h-64 mb-6">
+                            <img src="featuredPrograms/TravelToSpain.jpg" alt="Travel to Spain"
+                                class="w-full h-full object-cover rounded-lg shadow-md transform transition duration-300 hover:scale-105" />
+                        </div>
+                        <div class="p-6 flex flex-col flex-1">
+                            <h4 class="font-semibold text-lg text-blue-700 mb-2">Travel to Spain</h4>
+                            <p class="text-gray-600 mb-4 flex-1">Experience the vibrant culture, history, and beauty of
+                                Spain.</p>
+                            <a href="#" class="btn-primary text-center py-2 px-4 rounded-md font-medium mt-auto">Get
+                                Started</a>
+                        </div>
+                    </div>
+
+                    <!-- Card 6 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col w-[300px] flex-shrink-0">
+                        <div class="w-full h-64 mb-6">
+                            <img src="featuredPrograms/TravelToSpain.jpg" alt="Explore More of Spain"
+                                class="w-full h-full object-cover rounded-lg shadow-md transform transition duration-300 hover:scale-105" />
+                        </div>
+                        <div class="p-6 flex flex-col flex-1">
+                            <h4 class="font-semibold text-lg text-blue-700 mb-2">Explore More of Spain</h4>
+                            <p class="text-gray-600 mb-4 flex-1">Unlock more opportunities to study, work, or travel in
+                                Spain.</p>
+                            <a href="#" class="btn-primary text-center py-2 px-4 rounded-md font-medium mt-auto">Learn
+                                More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hide Scrollbar -->
+            <style>
+                .no-scrollbar::-webkit-scrollbar {
+                    display: none;
+                }
+
+                .no-scrollbar {
+                    -ms-overflow-style: none;
+                    scrollbar-width: none;
+                }
+            </style>
+
+            <!-- Scroll Script (Auto Scroll Removed) -->
+            <script>
+                const scrollContainer = document.getElementById('scrollContainer');
+                const cardWidth = 300;
+                const gap = 24;
+
+                function getCardsPerScroll() {
+                    return window.innerWidth < 1024 ? 1 : 2; // 1 card on small screens, 2 on large
+                }
+
+                function getScrollAmount() {
+                    return (cardWidth + gap) * getCardsPerScroll();
+                }
+
+                document.getElementById('scrollLeft').addEventListener('click', () => {
+                    scrollContainer.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+                });
+
+                document.getElementById('scrollRight').addEventListener('click', () => {
+                    scrollContainer.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+                });
+            </script>
+
+
+
+
+            <section id="payment-channels" class="py-12 px-4 bg-gray-50">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-3xl font-bold text-blue-800 mb-6">Payment Channels</h2>
+                    <img src="OfficialPaymentChanel.jpg" alt="Official Payment Channels"
+                        class="mx-auto w-full max-w-md md:max-w-lg rounded-lg shadow hover:scale-105 transition duration-300">
+                </div>
+            </section>
+
+        </div>
+    </section>
+    <script>
+        // Professional accordion logic for Services Section
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('#services-accordion .accordion-btn').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const key = this.getAttribute('data-accordion');
+                    const content = document.querySelector(`#services-accordion [data-content="${key}"]`);
+                    const svgIcon = this.querySelector('.accordion-icon');
+                    const isOpen = content.classList.contains('open');
+
+                    // Close all
+                    document.querySelectorAll('#services-accordion .accordion-content').forEach(c => {
+                        c.style.maxHeight = null;
+                        c.classList.remove('open');
+                    });
+                    document.querySelectorAll('#services-accordion .accordion-icon').forEach(svg => {
+                        svg.classList.remove('rotate');
+                    });
+
+                    // Toggle current
+                    if (!isOpen) {
+                        content.classList.add('open');
+                        content.style.maxHeight = content.scrollHeight + "px";
+                        svgIcon.classList.add('rotate');
+                    } else {
+                        content.classList.remove('open');
+                        content.style.maxHeight = null;
+                        svgIcon.classList.remove('rotate');
+                    }
+                });
+            });
+        });
+
+        // Carousel scroll logic for Featured Programs (3 cards at a time)
+        (function () {
+            const scrollContainer = document.getElementById('carousel-scroll');
+            const viewport = document.getElementById('carousel-viewport');
+            const leftBtn = document.getElementById('carousel-left');
+            const rightBtn = document.getElementById('carousel-right');
+            if (!scrollContainer || !leftBtn || !rightBtn || !viewport) return;
+
+            const scrollBy = 960; // 3 cards * 300px + 2*24px space-x-6
+
+            function updateArrows() {
+                leftBtn.disabled = scrollContainer.scrollLeft <= 0;
+                rightBtn.disabled = scrollContainer.scrollLeft + viewport.offsetWidth >= scrollContainer.scrollWidth - 5;
+            }
+
+            leftBtn.addEventListener('click', () => {
+                scrollContainer.scrollBy({ left: -scrollBy, behavior: 'smooth' });
+                setTimeout(updateArrows, 400);
+            });
+
+            rightBtn.addEventListener('click', () => {
+                scrollContainer.scrollBy({ left: scrollBy, behavior: 'smooth' });
+                setTimeout(updateArrows, 400);
+            });
+
+            scrollContainer.addEventListener('scroll', updateArrows);
+            window.addEventListener('resize', updateArrows);
+            setTimeout(updateArrows, 100);
+        })();
+    </script>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-100">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="section-title">About Us</h2>
+            <div class="flex flex-col md:flex-row items-start gap-12">
+                <!-- Left: Image -->
+                <div class="md:w-1/2 mb-10 md:mb-0 flex justify-center">
+                    <img src="logo.jpg" alt="BVTC Global Recruitment team" class="rounded-lg shadow-xl w-full max-w-md">
+                </div>
+
+                <!-- Right: Content -->
+                <div class="md:w-1/2">
+                    <p class="text-gray-600 mb-4">
+                        Bridgeway Visa Travel Corporation offers expert visa services for student, tourist, and
+                        permanent residency applications, with a 96% approval rate.
+                        We provide support for Canada, Australia, New Zealand, USA, UK, and more—ensuring seamless
+                        processing and success.
+                    </p>
+
+                    <p class="text-gray-600 mb-4">
+                        Dreaming of a better future for you and your family? Bridgeway Visa Travel Corporation is here
+                        to turn that dream into reality! 💼📚✈️
+                    </p>
+
+                    <p class="text-gray-600 mb-4">
+                        <strong>Why Choose Us?</strong><br>
+                        ✅ Study While Working Abroad – Gain international experience while studying<br>
+                        ✅ Visa Assistance – We process Tourist, Student, Dependent Visas, and more<br>
+                        ✅ Wide Network of Partner Schools – Choose from top institutions offering quality education<br>
+                        ✅ In-Demand Courses – Nursing, Engineering, Caregiving, Business Administration, IT & more<br>
+                        ✅ Post-Graduation Work Opportunities – Open doors to long-term career and residency abroad<br>
+                        ✅ Affordable & Flexible Programs – Find options that fit your budget and goals
+                    </p>
+
+                    <p class="text-gray-600 mb-4">
+                        <strong>Benefits of Studying Abroad with Bridgeway:</strong><br>
+                        💡 Earn while you learn<br>
+                        💡 Build international connections<br>
+                        💡 Strengthen your credentials<br>
+                        💡 Pathway to permanent residency<br>
+                        💡 Improve your quality of life and secure your future
+                    </p>
+
+                    <p class="text-gray-600 mb-4">
+                        We are committed to guiding you every step of the way—from application to arrival.
+                    </p>
+
+                    <p class="text-gray-600 mb-4">
+                        ✨ Let’s make your global dreams come true. With Bridgeway, you’re not just applying — you’re
+                        preparing for a new life. ✨
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Accordion Section (kept as requested) -->
+    <section class="py-12 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div id="about-accordion" class="space-y-4">
+                <!-- Mission -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                    <button type="button" aria-expanded="false"
+                        class="w-full flex justify-between items-center px-6 py-4 text-lg font-semibold text-blue-800 bg-blue-100 hover:bg-blue-200 focus:outline-none transition accordion-btn"
+                        data-accordion="mission">
+                        <span>Mission</span>
+                        <svg class="w-5 h-5 accordion-icon transition-transform duration-300" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="accordion-content bg-white text-gray-700 transition-all duration-300 max-h-0 overflow-hidden"
+                        data-content="mission">
+                        <div class="px-6 pb-5 pt-2 leading-relaxed">
+                            <p>
+                                Bridgeway Visa Travel Corporation commits to offering a high standard of service
+                                to its clients. The company aims to create and promote a healthy, exuberant,
+                                respectful, and enjoyable operating environment. We are imbued with the values
+                                of honesty, integrity, and competence: proffering quality and consistency in our
+                                work. It is our goal to give the best customer service.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Vision -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                    <button type="button" aria-expanded="false"
+                        class="w-full flex justify-between items-center px-6 py-4 text-lg font-semibold text-blue-800 bg-blue-100 hover:bg-blue-200 focus:outline-none transition accordion-btn"
+                        data-accordion="vision">
+                        <span>Vision</span>
+                        <svg class="w-5 h-5 accordion-icon transition-transform duration-300" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="accordion-content bg-white text-gray-700 transition-all duration-300 max-h-0 overflow-hidden"
+                        data-content="vision">
+                        <div class="px-6 pb-5 pt-2 leading-relaxed">
+                            <p>
+                                To be the most trusted and dynamic visa and travel solutions provider—empowering
+                                dreams, connecting people across borders, and setting the benchmark for
+                                excellence in customer service through unwavering integrity, professionalism,
+                                and care.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Commitment to Compliance -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                    <button type="button" aria-expanded="false"
+                        class="w-full flex justify-between items-center px-6 py-4 text-lg font-semibold text-blue-800 bg-blue-100 hover:bg-blue-200 focus:outline-none transition accordion-btn"
+                        data-accordion="compliance">
+                        <span>Commitment to Compliance</span>
+                        <svg class="w-5 h-5 accordion-icon transition-transform duration-300" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="accordion-content bg-white text-gray-700 transition-all duration-300 max-h-0 overflow-hidden"
+                        data-content="compliance">
+                        <div class="px-6 pb-5 pt-2 leading-relaxed space-y-3">
+                            <p>
+                                At BVTC Global Recruitment Inc., we are deeply committed to upholding the
+                                highest standards of compliance in every aspect of our operations. We strictly
+                                follow all recruitment and labor laws in the Philippines, including the
+                                regulations set forth by the Department of Migrant Workers (DMW).
+                            </p>
+                            <p>
+                                Our agency practices ethical recruitment, ensuring that all candidates are
+                                treated with fairness, dignity, and respect throughout the hiring process. From
+                                transparent communication to lawful documentation, we guarantee that every step
+                                meets legal and ethical requirements.
+                            </p>
+                            <p>
+                                In addition to national compliance, we also observe strict international labor
+                                standards, ensuring that our deployed professionals are placed in safe, fair,
+                                and ethical working environments abroad. Our dedication to compliance extends
+                                beyond legal obligations—we advocate for transparency in fees, ethical placement
+                                practices, and continuous support for both our candidates and partner employers.
+                            </p>
+                            <p>
+                                With BVTC, you can be assured of a recruitment process rooted in integrity,
+                                accountability, and care.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Why choose Bridgeway Visa Travel Corporation?. -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                    <button type="button" aria-expanded="false"
+                        class="w-full flex justify-between items-center px-6 py-4 text-lg font-semibold text-blue-800 bg-blue-100 hover:bg-blue-200 focus:outline-none transition accordion-btn"
+                        data-accordion="whychoose">
+                        <span>Why choose Bridgeway Visa Travel Corporation?</span>
+                        <svg class="w-5 h-5 accordion-icon transition-transform duration-300" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="accordion-content bg-white text-gray-700 transition-all duration-300 max-h-0 overflow-hidden"
+                        data-content="whychoose">
+                        <div class="px-6 pb-5 pt-2 leading-relaxed space-y-3">
+                            <p>
+                                Choosing a travel partner like Bridgeway Visa Travel Corporation is more than a
+                                transaction—it's a leap toward your dreams.<br>
+                                <strong>Trust and reliability:</strong> We don’t just send you places—we walk
+                                with you through every step.<br>
+                                <strong>Expertise and care:</strong> Your journey is our mission.<br>
+                                <strong>Empowerment:</strong> We turn paperwork into possibilities.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Our Team Section -->
+    <section id="our-team" class="our-team-section">
+        <div class="our-team-container">
+            <h2 class="section-title">Our Team</h2>
+            <div class="team-row">
+                <div class="flex flex-col items-center bg-white rounded-lg shadow p-4 w-56">
+                    <img src="ourTeam/Mr.MarlBensonCadaba.png" alt="Mr. Marl Benson Cadaba"
+                        class="team-photo-large mb-3 border-2 border-blue-600">
+                    <div class="font-bold text-gray-800 text-center">Mr. Marl Benson Cadaba</div>
+                    <div class="text-blue-600 text-sm font-semibold text-center">Chairman</div>
+                </div>
+                <div class="flex flex-col items-center bg-white rounded-lg shadow p-4 w-56">
+                    <img src="ourTeam/Ms.NhoimeGraceG.Cadaba.png" alt="Ms. Nhoime Grace G. Cadaba"
+                        class="team-photo-large mb-3 border-2 border-blue-600">
+                    <div class="font-bold text-gray-800 text-center">Ms. Nhoime Grace G. Cadaba</div>
+                    <div class="text-blue-600 text-sm font-semibold text-center">Chief Operating Officer</div>
+                </div>
+                <div class="flex flex-col items-center bg-white rounded-lg shadow p-4 w-56">
+                    <img src="ourTeam/Mr.LeonardoT.Rios.png" alt="Mr. Leonardo T. Rios"
+                        class="team-photo-large mb-3 border-2 border-blue-600">
+                    <div class="font-bold text-gray-800 text-center">Mr. Leonardo T. Rios</div>
+                    <div class="text-blue-600 text-sm font-semibold text-center">Co-Founder / Finance</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section id="partners" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <h2 class="text-3xl font-bold text-blue-800 text-center mb-6">Our Partners</h2>
+            <div class="text-center mb-12">
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    We are proud to collaborate with leading organizations and clients worldwide.
+                </p>
+            </div>
+
+            <!-- Cards Container -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+                <!-- Partner Card Template -->
+                <div
+                    class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 w-full max-w-sm text-center transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:border-blue-300">
+                    <div class="w-28 h-28 mx-auto mb-4">
+                        <img src="ourPartners/skylineInternationalCollege.jpg" alt="Skyline International College Logo"
+                            class="w-full h-full object-contain rounded-full" />
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-800 mb-1">Skyline International College</h4>
+                    <p class="text-gray-600 text-sm mb-2">Australia</p>
+                    <p class="text-gray-700 italic">
+                        "Skyline International College offers a wide range of programs that prepare students for global
+                        careers through practical and innovative learning experiences."
+                    </p>
+                </div>
+
+                <div
+                    class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 w-full max-w-sm text-center transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:border-blue-300">
+                    <div class="w-28 h-28 mx-auto mb-4">
+                        <img src="ourPartners/timesEducation.jpg" alt="Times Education Logo"
+                            class="w-full h-full object-contain rounded-full" />
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-800 mb-1">Times Education</h4>
+                    <p class="text-gray-600 text-sm mb-2">Institution Provider for Australia</p>
+                    <p class="text-gray-700 italic">
+                        "Times Education supports international students in pursuing quality Australian education across
+                        its network of colleges and institutions."
+                    </p>
+                </div>
+
+                <div
+                    class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 w-full max-w-sm text-center transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:border-blue-300">
+                    <div class="w-28 h-28 mx-auto mb-4">
+                        <img src="ourPartners/GoozingMigration.jpg" alt="Gogozing Migration Logo"
+                            class="w-full h-full object-contain rounded-full" />
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-800 mb-1">Gogozing Migration</h4>
+                    <p class="text-gray-600 text-sm mb-2">Partner Australian Migration Agent</p>
+                    <p class="text-gray-700 italic">
+                        "Gogozing Migration offers expert visa and migration assistance for students and professionals
+                        planning to settle or study in Australia."
+                    </p>
+                </div>
+
+                <div
+                    class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 w-full max-w-sm text-center transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:border-blue-300">
+                    <div class="w-28 h-28 mx-auto mb-4">
+                        <img src="ourPartners/canberraCollegeOfManagement&Technology.jpg"
+                            alt="Canberra College of Management and Technology Logo"
+                            class="w-full h-full object-contain rounded-full" />
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-800 mb-1">Canberra College of Management and Technology</h4>
+                    <p class="text-gray-600 text-sm mb-2">Australia</p>
+                    <p class="text-gray-700 italic">
+                        "CCMT delivers high-quality vocational education in business, management, and technology
+                        disciplines with industry-focused training."
+                    </p>
+                </div>
+
+                <div
+                    class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 w-full max-w-sm text-center transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:border-blue-300">
+                    <div class="w-28 h-28 mx-auto mb-4">
+                        <img src="ourPartners/Adventus.io.jpg" alt="Adventus Logo"
+                            class="w-full h-full object-contain rounded-full" />
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-800 mb-1">Adventus</h4>
+                    <p class="text-gray-600 text-sm mb-2">International College Partner</p>
+                    <p class="text-gray-700 italic">
+                        "Adventus connects students to global education opportunities through its comprehensive platform
+                        for international college admissions."
+                    </p>
+                </div>
+
+                <div
+                    class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 w-full max-w-sm text-center transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:border-blue-300">
+                    <div class="w-28 h-28 mx-auto mb-4">
+                        <img src="ourPartners/InternationalBusinessUniversity.jpg"
+                            alt="International Business University Logo" class="w-full h-full object-contain" />
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-800 mb-1">International Business University</h4>
+                    <p class="text-gray-600 text-sm mb-2">Academic Partner</p>
+                    <p class="text-gray-700 italic">
+                        "Enrolling at International Business University was one of the best decisions made for academic
+                        and professional growth. The curriculum is thoughtfully designed to blend theory with real-world
+                        application, especially in areas like digital transformation, entrepreneurship, and innovation."
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="text-center mb-16">
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Get in touch with our team to discuss your recruitment needs
+                </p>
+            </div>
+
+            <!-- Flex Container -->
+            <div class="md:flex gap-12">
+                <!-- Left column -->
+                <div class="md:w-1/2 flex flex-col lg:flex-row gap-6">
+                    <!-- Enter Details Section -->
+                    <div id="form-section" class="bg-white p-8 rounded-lg shadow-lg flex flex-col w-full">
+                        <h2 class="text-3xl font-bold text-blue-800 text-center mb-8">Enter Details</h2>
+
+                        <form id="inquiry-form" class="flex flex-col space-y-4">
+                            <!-- Name -->
+                            <div>
+                                <label class="block text-gray-700 mb-2" for="name">Enter a Name</label>
+                                <input type="text" id="name" name="name" required
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                            </div>
+
+                            <!-- Email -->
+                            <div>
+                                <label class="block text-gray-700 mb-2" for="email">Email</label>
+                                <input type="email" id="email" name="email" required
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                            </div>
+
+                            <!-- Add Guests -->
+                            <div>
+                                <button type="button"
+                                    class="bg-blue-600 text-white w-full py-3 px-4 rounded-md font-medium hover:bg-blue-700 transition">
+                                    Add Guests
+                                </button>
+                            </div>
+
+                            <!-- Meeting Prep Note -->
+                            <p class="text-sm text-gray-600">
+                                Please share anything that will help prepare for our meeting. *
+                            </p>
+                            <textarea rows="4"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                placeholder="Type here..."></textarea>
+
+                            <!-- Visa Type -->
+                            <div>
+                                <label class="block text-gray-700 mb-2" for="visaType">What type of visa you're applying
+                                    for? *</label>
+                                <input type="text" id="visaType" name="visaType" required
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                            </div>
+
+                            <!-- Country Checklist -->
+                            <div>
+                                <label class="block text-gray-700 mb-2">Country of Choice *</label>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <label><input type="checkbox" name="country" value="Canada"
+                                            class="mr-2">Canada</label>
+                                    <label><input type="checkbox" name="country" value="Australia"
+                                            class="mr-2">Australia</label>
+                                    <label><input type="checkbox" name="country" value="Spain"
+                                            class="mr-2">Spain</label>
+                                    <label><input type="checkbox" name="country" value="New Zealand" class="mr-2">New
+                                        Zealand</label>
+                                    <label><input type="checkbox" name="country" value="United Kingdom"
+                                            class="mr-2">United Kingdom</label>
+                                    <label><input type="checkbox" name="country" value="USA" class="mr-2">USA</label>
+                                    <label><input type="checkbox" name="country" value="Ireland"
+                                            class="mr-2">Ireland</label>
+                                    <div class="flex items-center">
+                                        <input type="checkbox" name="country" value="Other" class="mr-2">Other:
+                                        <input type="text" name="otherCountry" placeholder="Specify"
+                                            class="ml-2 flex-1 px-3 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Facebook Name -->
+                            <div>
+                                <label class="block text-gray-700 mb-2" for="facebook">What is your Facebook Name?
+                                    *</label>
+                                <input type="text" id="facebook" name="facebook" required
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                            </div>
+
+                            <!-- WhatsApp Number -->
+                            <div>
+                                <label class="block text-gray-700 mb-2" for="whatsapp">What is Your WhatsApp Number?
+                                    *</label>
+                                <input type="text" id="whatsapp" name="whatsapp" required
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                                <p id="whatsapp-error" class="text-sm text-red-500 mt-1 hidden">
+                                    Please enter a valid WhatsApp number (e.g., +639123456789).
+                                </p>
+                            </div>
+
+                            <!-- Agreement Checkbox -->
+                            <div class="flex items-start">
+                                <input type="checkbox" id="agree" name="agree" required class="mt-1 mr-2">
+                                <label for="agree" class="text-sm text-gray-600">
+                                    By proceeding you confirm that you have read and agree
+                                </label>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button type="submit"
+                                class="bg-blue-600 text-white w-full py-3 px-4 rounded-md font-medium hover:bg-blue-700 transition">
+                                Continue
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Booking Section -->
+                    <div id="booking-section" class="bg-white p-8 rounded-lg shadow-lg flex flex-col w-full hidden">
+                        <h3 class="text-2xl font-bold text-blue-700 mb-4">Schedule Your Appointment</h3>
+                        <p class="text-gray-600 mb-4">Available dates and time slots:<br>
+                            <strong>Monday–Friday: 9:00 AM – 4:00 PM</strong><br>
+                            <strong>Saturday: 8:00 AM – 12:00 PM</strong>
+                        </p>
+
+                        <form>
+                            <!-- Date Picker -->
+                            <div class="mb-4">
+                                <label class="block text-gray-700 mb-2" for="date">Select Date</label>
+                                <input type="date" id="date" name="date" required
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                                <p id="date-warning" class="text-sm text-red-500 mt-1 hidden">Sundays are not allowed.
+                                    Please pick another date.</p>
+                            </div>
+
+                            <!-- Time Slot Picker -->
+                            <div class="mb-4">
+                                <label class="block text-gray-700 mb-2" for="time">Select Time</label>
+                                <select id="time" name="time" required
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <option value="">-- Choose a time slot --</option>
+                                </select>
+                            </div>
+
+                            <!-- Confirm Button -->
+                            <button type="submit"
+                                class="mt-6 bg-green-600 text-white w-full py-3 px-4 rounded-md font-medium hover:bg-green-700 transition">
+                                Confirm Booking
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- JavaScript -->
+                    <script>
+                        const dateInput = document.getElementById("date");
+                        const timeSelect = document.getElementById("time");
+                        const warningText = document.getElementById("date-warning");
+
+                        const weekdayTimes = [
+                            "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM",
+                            "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM"
+                        ];
+
+                        const saturdayTimes = [
+                            "8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM"
+                        ];
+
+                        const today = new Date();
+                        const yyyy = today.getFullYear();
+                        const mm = String(today.getMonth() + 1).padStart(2, '0');
+                        const dd = String(today.getDate()).padStart(2, '0');
+                        const minDate = `${yyyy}-${mm}-${dd}`;
+                        dateInput.setAttribute("min", minDate);
+
+                        dateInput.addEventListener("change", function () {
+                            const selectedDate = new Date(this.value);
+                            const day = selectedDate.getDay();
+
+                            if (day === 0) {
+                                this.value = "";
+                                timeSelect.innerHTML = "";
+                                warningText.classList.remove("hidden");
+                                return;
+                            }
+
+                            warningText.classList.add("hidden");
+                            timeSelect.innerHTML = '<option value="">-- Choose a time slot --</option>';
+
+                            const label = document.createElement("option");
+                            label.disabled = true;
+                            label.textContent = (day === 6) ? "Saturday:" : "Weekday:";
+                            timeSelect.appendChild(label);
+
+                            const times = (day === 6) ? saturdayTimes : weekdayTimes;
+                            times.forEach(time => {
+                                const opt = document.createElement("option");
+                                opt.textContent = time;
+                                opt.value = time;
+                                timeSelect.appendChild(opt);
+                            });
+                        });
+
+                        // WhatsApp number validation
+                        const whatsappInput = document.getElementById("whatsapp");
+                        const whatsappError = document.getElementById("whatsapp-error");
+
+                        whatsappInput.addEventListener("input", function () {
+                            const input = this.value;
+                            const isValid = /^\+?\d*$/.test(input); // allows "+" at start, digits only
+
+                            if (!isValid) {
+                                this.classList.add("border-red-500");
+                                whatsappError.classList.remove("hidden");
+                            } else {
+                                this.classList.remove("border-red-500");
+                                whatsappError.classList.add("hidden");
+                            }
+                        });
+
+                        // Form submission transition
+                        document.getElementById("inquiry-form").addEventListener("submit", function (e) {
+                            e.preventDefault();
+                            this.reset();
+                            document.getElementById("form-section").classList.add("hidden");
+                            document.getElementById("booking-section").classList.remove("hidden");
+                        });
+                    </script>
+
+
+                </div>
+
+
+                <!-- Right column -->
+                <div class="md:w-1/2 flex">
+                    <div class="bg-white p-8 rounded-lg shadow-lg flex flex-col w-full">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Contact Information</h3>
+                        <div class="flex-1">
+                            <div class="mb-6">
+                                <div class="flex items-start mb-4">
+                                    <span class="flex-shrink-0 mt-1 mr-3 text-blue-600">
+                                        <i class="fas fa-map-marker-alt fa-lg"></i>
+                                    </span>
+                                    <div>
+                                        <span class="font-semibold text-gray-800">Office Address</span>
+                                        <p class="text-gray-700">
+                                            You may visit us at our office located at:<br />
+                                            2nd Floor, MC Premiere Building, Balintawak EDSA, Quezon City, Philippines,
+                                            1181.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start mb-4">
+                                    <span class="flex-shrink-0 mt-1 mr-3 text-blue-600">
+                                        <i class="fas fa-clock fa-lg"></i>
+                                    </span>
+                                    <div>
+                                        <span class="font-semibold text-gray-800">Office Hours</span>
+                                        <p class="text-gray-700">
+                                            We are open from 8:00 AM to 5:00 PM, Mondays to Fridays, and from 8:00 AM to
+                                            12:00 NN on Saturdays. Kindly let us know when and what time you plan to
+                                            visit so
+                                            we can arrange the schedule accordingly. Thank you!
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex space-x-4 mt-4">
+                            <a href="https://www.facebook.com/people/Bridgeway-Visa-Travel-Corporation/61570211881355/"
+                                target="_blank" class="text-gray-600 hover:text-blue-600" aria-label="Facebook">
+                                <i class="fab fa-facebook-f"
+                                    style="font-size:1.5rem;width:1.5rem;height:1.5rem;display:inline-block;"></i>
+                            </a>
+                            <a href="https://www.tiktok.com/@bridgewayvisatravelcorp" target="_blank"
+                                class="text-gray-600 hover:text-blue-600" aria-label="TikTok">
+                                <i class="fab fa-tiktok"
+                                    style="font-size:1.5rem;width:1.5rem;height:1.5rem;display:inline-block;"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <img src="logo.jpg" alt="BVTC Logo"
+                            style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover; display: block;"
+                            class="BVTC-logo">
+                        <span class="ml-3 text-xl font-bold">Bridgeway Visa Tavel Corporation</span>
+                    </div>
+                    <p class="text-gray-400">Connecting the world's best talent with exceptional opportunities since
+                        2025.</p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#office" class="text-gray-400 hover:text-white">Office</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white">Services</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white">About</a></li>
+                        <li><a href="#partners" class="text-gray-400 hover:text-white">Partners</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Tourist Visa</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Student Visa</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Dependent Visa / Open Work Permit</a>
+                        </li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Post Graduation Work Visa</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Residency & Citizenship</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Cookie Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">GDPR Compliance</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 Bridgeway Visa Travel Corporation. All rights
+                    reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="https://www.facebook.com/people/Bridgeway-Visa-Travel-Corporation/61570211881355/"
+                        target="_blank" class="text-gray-400 hover:text-white" aria-label="Facebook"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.tiktok.com/@bridgewayvisatravelcorp?_r=1&_d=secCgYIASAHKAESPgo8xHoRj7K%2BaIv6riuPgyvl0MRxivpwVasfaZYSHe3Xag78ETMzTkVg7bjGcBfzlci4i7ZlpjjI3jjP22z0GgA%3D&_svg=1&checksum=3a4870bc50ea4a40bcdbbe4d85fd20e3dc556df6f5ccdc6ef04908bf1178dad8&sec_uid=MS4wLjABAAAAgAQ3HyddRdNREpbl8VVwqlp6GCA7tSjDmyMe9KXaweMBbc2Z6-AT_ZvUL5XMSbsW&sec_user_id=MS4wLjABAAAAu0iXaQ7aQoXVJH3APNvqPbAJzmVNJ2wMu8IxhDrdSOpxYx79HE_SELzYovyLfMHT&share_app_id=1180&share_author_id=6950919921543185410&share_link_id=BF2232E0-03DA-4938-AA35-A225804932D1&share_scene=1&sharer_language=en&social_share_type=5&source=h5_t&timestamp=1751692685&tt_from=copy&u_code=2lcc96jmejlje&ug_btm=b6880%2Cb5836&user_id=64357713932996608&utm_campaign=client_share&utm_medium=ios&utm_source=copy"
+                        target="_blank" class="text-gray-600 hover:text-blue-600" aria-label="TikTok">
+                        <i class="fab fa-tiktok"
+                            style="font-size:1.5rem;width:1.5rem;height:1.5rem;display:inline-block;"></i>
+                    </a>
+                    <!-- Removed X (Twitter) and YouTube icons -->
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top"
+        class="fixed bottom-6 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function () {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Back to Top Button
+        const backToTopButton = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', function () {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+
+        backToTopButton.addEventListener('click', function () {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Form Submission Handler
+        const form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                // Here you would typically send the form data to a server
+                alert('Thank you for your inquiry. Our team will contact you shortly.');
+                form.reset();
+
+                // Smooth scroll to contact section after submission
+                const contactSection = document.getElementById('contact');
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+            });
+        }
+
+
+        // Smooth scrolling for all links with hashes
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                // Close mobile menu if open
+                const mobileMenu = document.getElementById('mobile-menu');
+                mobileMenu.classList.add('hidden');
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animate elements when they scroll into view
+        const animateOnScroll = function () {
+            const elements = document.querySelectorAll('.service-card, .partners-card, .stats-item');
+
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (elementPosition < windowHeight - 100) {
+                    element.classList.add('animate-fade-in');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+
+        // Accordion logic (single-open, toggle on click)
+        document.querySelectorAll('#accordion [data-accordion]').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const key = this.getAttribute('data-accordion');
+                const content = document.querySelector(`#accordion [data-content="${key}"]`);
+                const svgIcon = this.querySelector('svg');
+                const isOpen = content.classList.contains('open');
+
+                // Close all
+                document.querySelectorAll('#accordion .accordion-content').forEach(c => {
+                    c.style.maxHeight = null;
+                    c.classList.remove('open');
+                });
+                document.querySelectorAll('#accordion .accordion-icon').forEach(icon => {
+                    icon.classList.remove('rotate');
+                });
+
+                // Toggle current
+                if (!isOpen) {
+                    content.classList.add('open');
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    svgIcon.classList.add('rotate');
+                } else {
+                    content.classList.remove('open');
+                    content.style.maxHeight = null;
+                    svgIcon.classList.remove('rotate');
+                }
+            });
+        });
+
+        // About Accordion logic (single-open, toggle on click)
+        document.querySelectorAll('#about-accordion .accordion-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const key = this.getAttribute('data-accordion');
+                const content = document.querySelector(`#about-accordion [data-content="${key}"]`);
+                const svgIcon = this.querySelector('.accordion-icon');
+                const isOpen = content.classList.contains('open');
+
+                // Close all
+                document.querySelectorAll('#about-accordion .accordion-content').forEach(c => {
+                    c.style.maxHeight = null;
+                    c.classList.remove('open');
+                });
+                document.querySelectorAll('#about-accordion .accordion-icon').forEach(svg => {
+                    svg.classList.remove('rotate');
+                });
+
+                // Toggle current
+                if (!isOpen) {
+                    content.classList.add('open');
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    svgIcon.classList.add('rotate');
+                } else {
+                    content.classList.remove('open');
+                    content.style.maxHeight = null;
+                    svgIcon.classList.remove('rotate');
+                }
+            });
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('#about-accordion .accordion-content').forEach(c => {
+                c.style.maxHeight = null;
+                c.classList.remove('open');
+            });
+            document.querySelectorAll('#about-accordion .accordion-icon').forEach(svg => {
+                svg.classList.remove('rotate');
+            });
+        });
+    </script>
+</body>
+
+</html>
