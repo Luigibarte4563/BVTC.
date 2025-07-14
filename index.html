@@ -15,6 +15,7 @@
 
 <body>
     <!-- Navigation -->
+    <!-- Navigation -->
     <nav class="fixed w-full z-50 bg-black shadow-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
@@ -44,8 +45,7 @@
 
                 <!-- Mobile Menu Button -->
                 <div class="md:hidden">
-                    <button id="mobile-menu-button" aria-label="Toggle menu"
-                        class="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-red-600 focus:outline-none">
+                    <button id="mobile-menu-button" class="text-white focus:outline-none">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M4 6h16M4 12h16M4 18h16" />
@@ -69,6 +69,15 @@
                 class="block text-white hover:text-red-600 px-3 py-2 rounded-md text-base font-medium">Contact</a>
         </div>
     </nav>
+
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
 
     <!-- Working Toggle Script -->
     <script>
